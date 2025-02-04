@@ -79,7 +79,7 @@ func main() {
 		// Retrieve the value from Redis using GET.
 		val, err := rdb.Get(ctx, rk).Result()
 		if err == redis.Nil {
-			log.Printf("Line %d: key '%s' does not exist in Redis", lineNumber, decodedKey)
+			log.Printf("Line %d: key '%s' does not exist in Redis", lineNumber, rk)
 			continue
 		} else if err != nil {
 			log.Printf("Line %d: error retrieving key '%s': %v", lineNumber, rk, err)
