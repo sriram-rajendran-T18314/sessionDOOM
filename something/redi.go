@@ -19,6 +19,7 @@ func main() {
 	port := flag.String("port", "6379", "Redis server port")
 	username := flag.String("username", "", "Redis username (if required)")
 	password := flag.String("password", "", "Redis password (if required)")
+	db := flag.Int("db", 9, "put mfkin redis db")
 	keysFile := flag.String("keysfile", "keys.txt", "Path to file containing base64-encoded keys")
 	outFile := flag.String("outfile", "output.txt", "Path to file for output")
 	flag.Parse()
@@ -31,6 +32,7 @@ func main() {
 		Addr:     addr,
 		Username: *username,
 		Password: *password,
+		DB:       *db,
 	})
 
 	// Create a context for Redis commands.
