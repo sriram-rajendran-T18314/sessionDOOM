@@ -53,7 +53,7 @@ const (
 	DCookieFile      = "./DesktopCookies.txt"
 	ThrottleDelay    = 50 * time.Millisecond // Delay between API calls
 	cookieName       = "_d"
-	MAXEMAIL         = 500
+	MAXEMAIL         = 100
 )
 
 func getUserAgent() (string, string) {
