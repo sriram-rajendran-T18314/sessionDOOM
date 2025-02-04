@@ -74,10 +74,10 @@ func main() {
 
 		// Construct the Redis key.
 		// For example: "spring:session:sessions:" + decodedKey + "sessionAttr:DEVICE_TYPE"
-		rk := "spring:session:sessions:" + decodedKey + " sessionAttr:DEVICE_TYPE"
+		rk := "spring:session:sessions:" + decodedKey
 
 		// Retrieve the value from Redis using GET.
-		val, err := rdb.Get(ctx, rk).Result()
+		val, err := rdb.HGet(ctx, rk, "sessionAttr:DEVICE_TYPE").Result()
 		if err == redis.Nil {
 			log.Printf("Line %d: key '%s' does not exist in Redis", lineNumber, rk)
 			continue
