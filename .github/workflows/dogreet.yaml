@@ -1,0 +1,19 @@
+# this will listen for the "/do greet" comment and run the workflow
+#
+name: DoGreet
+on:
+  issue_comment:
+    types: [created]
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check for the comment "/do greet"
+        run: |
+          if [[ "${{ github.event.comment.body }}" == "/do greet" ]]; then
+            echo "This is a first issue"
+          else
+            echo "This is not a first issue"
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
